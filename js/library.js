@@ -45,6 +45,10 @@ function addToLibrary (title, author, pages) {
     newDiv.classList.add("book-cards")
 
     newButton = document.createElement("button")
+    modalReadButton = newButton
+    modalReadButton.textContent = "Read"
+    //modalDeleteButton 
+    
 
     newList = document.createElement("ul")
 
@@ -72,8 +76,12 @@ function addToLibrary (title, author, pages) {
     //document.appendChild(bookLayoutDiv)
 }
 
-
-
+// Delete Entry
+const deleteBookButton = document.querySelector("#delete-book")
+deleteBookButton.addEventListener("click", (e) => {
+    let activeBook = document.querySelector(`#${e.target.parentNode.parentNode.id}`)
+    activeBook.remove()
+});
 
 let myLibrary = [
     new Book("1984", "George Orwell", 354),
