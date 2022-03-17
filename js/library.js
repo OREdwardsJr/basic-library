@@ -2,6 +2,11 @@ const addButton = document.getElementById("add-book-button");
 const bookSection = document.querySelector(".book-layout-section");
 const popUpForm = document.querySelector(".pop-up-form")
 const popUpContainer = document.querySelector(".pop-up-container")
+let myLibrary = [
+    new Book("1984", "George Orwell", 354),
+    new Book("Goosebumps", "R.L. Stine", 543)
+]
+let bookId = myLibrary.length
 
 // Grab input values
 let grabTitle = document.querySelector("#add-book-name").value
@@ -43,12 +48,16 @@ function addToLibrary (title, author, pages) {
     let bookLayoutDiv = document.querySelector(".book-layout-section") 
     newDiv = document.createElement("div")
     newDiv.classList.add("book-cards")
+    newDiv.id = `book${myLibrary.length}`
 
     modalReadButton = document.createElement("button")
     modalReadButton.textContent = "Read"
     //modalDeleteButton 
     modalDeleteButton = document.createElement("button")
+    modalDeleteButton.id = "delete-book"
+    modalDeleteButton.addEventListener("click", deleteEntry)
     modalDeleteButton.textContent = "Delete"
+    
 
     newList = document.createElement("ul")
 
@@ -75,22 +84,31 @@ function addToLibrary (title, author, pages) {
     
     bookLayoutDiv.appendChild(newDiv)
 
-
     //bookLayoutDiv.appendChild(newDiv.appendChild(newList.appendChild(newListItem.appendChild(newHeader))))
     //document.appendChild(bookLayoutDiv)
 }
 
+/*document.addEventListener('click',function(e){
+    if(e.target && e.target.id== 'delete-book'){
+          deleteEntry(e)
+     }
+ }); */
+
 // Delete Entry
-const deleteBookButton = document.querySelector("#delete-book")
-deleteBookButton.addEventListener("click", (e) => {
+const deleteBookButton = document.querySelector(".delete-book")
+function deleteEntry (e) {
     let activeBook = document.querySelector(`#${e.target.parentNode.parentNode.id}`)
     activeBook.remove()
-});
+}
 
-let myLibrary = [
-    new Book("1984", "George Orwell", 354),
-    new Book("Goosebumps", "R.L. Stine", 543)
-]
+deleteBookButton.addEventListener("click", deleteEntry)
+
+/* deleteBookButton.addEventListener("click", (e) => {
+    let activeBook = document.querySelector(`#${e.target.parentNode.parentNode.id}`)
+    activeBook.remove()
+}); */
+
+
 
 myLibrary.forEach(element => console.log(element.title))
 
