@@ -44,11 +44,11 @@ function addToLibrary (title, author, pages) {
     newDiv = document.createElement("div")
     newDiv.classList.add("book-cards")
 
-    newButton = document.createElement("button")
-    modalReadButton = newButton
+    modalReadButton = document.createElement("button")
     modalReadButton.textContent = "Read"
     //modalDeleteButton 
-    
+    modalDeleteButton = document.createElement("button")
+    modalDeleteButton.textContent = "Delete"
 
     newList = document.createElement("ul")
 
@@ -65,7 +65,11 @@ function addToLibrary (title, author, pages) {
     newList.append(newListItem.appendChild(newTitle))
     newList.appendChild(newAuthor)
     newList.appendChild(newPages)
-    newList.appendChild(newButton)
+    newList.appendChild(modalReadButton)
+    newList.appendChild(modalDeleteButton)
+   /* modalDeleteButton = newButton
+    modalDeleteButton.textContent = "Delete"
+    newList.appendChild(modalDeleteButton) */
 
     newDiv.appendChild(newList)
     
@@ -98,13 +102,23 @@ window.onload = () => console.log(loadBooks())
 
 
 // Launch Modal
-addButton.addEventListener("click", () => {
-   // newEntry()
-    popUpContainer.style.width = "100%"
-    popUpContainer.style.height = "100%"
-    popUpForm.style.display = "grid"
+
+
+function toggleModal() {
+    popUpContainer.classList.toggle("show-pop-up-container");
 }
-);
+
+// This closes window and works
+function windowOnClick(event) {
+    if (event.target === popUpContainer) {
+        toggleModal();
+    }
+}
+window.addEventListener("click", windowOnClick); 
+addButton.addEventListener("click", toggleModal);
+
+
+//
 
 /* function newEntry () {
     const newDiv = document.createElement("div");

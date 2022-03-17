@@ -3,18 +3,32 @@
     padding: 0px;
 }
 
+
 .pop-up-container {
-    display: grid;
-    position: absolute;
-    height: 0%;
-    width: 0%;
-    place-content: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+}
+
+.show-pop-up-container {
+    opacity: 1;
+    visibility: visible;
+
 }
 
 .pop-up-form {
-    display: none;
+    /* display: grid; 
     width: 40vw;
-    height: 50vh;
+    height: 50vh;*/
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
     border: 1px dashed black;
     color: red;
     grid-template-rows: 1fr 3fr 1fr;
