@@ -11,6 +11,10 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
+
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&family=Lora:wght@500&display=swap');
+        </style> 
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -40,20 +44,22 @@
 
         <div class="main-container">
             <div class="main-container-head">
-
+                <h1>myLibrary</h1>
             </div>
             <div class="main-container-content">
-                <div id="add-book-section">
-                    <button id="add-book-button">Add</button>
+                <div id="add-book-section" style="display: flex;">
+                    <button id="add-book-button">Add Book</button>
                 </div>
-                <div class="book-layout-section">
+                <div class="book-layout-section" style="padding: 35px">
                     <div class="book-cards" id="book01">
-                        <ul>
+                        <ul style="display: grid">
+                            <button id="delete-book" class="delete-book">X</button>
                             <li><h1>1984</h1></li>
                             <li>Author: George Orwell</li>
                             <li>400 pages</li>
-                            <button>read</button>
-                            <button id="delete-book" class="delete-book">Delete</button>
+                            
+                            <label for="switch"><input type="checkbox" name="switch" id="switch">Have Read</label>
+                           <!-- <button>read</button> -->
                         </ul>
                     </div>
                 </div>

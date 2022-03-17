@@ -56,7 +56,7 @@ function addToLibrary (title, author, pages) {
     modalDeleteButton = document.createElement("button")
     modalDeleteButton.id = "delete-book"
     modalDeleteButton.addEventListener("click", deleteEntry)
-    modalDeleteButton.textContent = "Delete"
+    modalDeleteButton.textContent = "X"
     
 
     newList = document.createElement("ul")
@@ -71,11 +71,14 @@ function addToLibrary (title, author, pages) {
     newPages = document.createElement("li")
     newPages.textContent = pages
     
+ 
+    
+
+    newList.appendChild(modalDeleteButton)
     newList.append(newListItem.appendChild(newTitle))
     newList.appendChild(newAuthor)
     newList.appendChild(newPages)
     newList.appendChild(modalReadButton)
-    newList.appendChild(modalDeleteButton)
    /* modalDeleteButton = newButton
     modalDeleteButton.textContent = "Delete"
     newList.appendChild(modalDeleteButton) */
